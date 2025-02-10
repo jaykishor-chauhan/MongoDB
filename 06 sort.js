@@ -16,3 +16,14 @@ db.inventory.find().skip(2)  // this will skip first two document
 
 db.inventory.find().limit(1)  // show the first document from the db
 db.inventory.find().limit(2)  // show the first two document from the db
+
+
+//Archiving paging using MongoDB find and limit
+// if i want 8 blogs in one page
+blogLimit = 8
+
+db.inventory.find().skip((pageno-1)*8).limit(blogLimit)
+
+pageno=1, db.inventory.find().skip(0).limit(blogLimit)  // in first page showing 8 blogs
+pageno=2, db.inventory.find().skip(8).limit(blogLimit)  // in second page showing next 8 blogs by skipping first 8 blogs
+
